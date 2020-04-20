@@ -37,7 +37,7 @@ It also provides informations to the curator (or administrator) of the museum, m
 | React Web| Framework developed by facebook to build web app using Javascript |[https://it.reactjs.org] |
 | RIOT OS| OS for embedded devices|[https://riot-os.org] |
 | COAP|Comunication protocol for small devices|[https://en.wikipedia.org/wiki/Constrained_Application_Protocol] |
-|IEEE 802.15.4|Low rate wifi protocal for small embedded devices |[https://it.wikipedia.org/wiki/IEEE_802.15.4] |
+|IEEE 802.15.4|Low rate wifi protocol for small embedded devices |[https://it.wikipedia.org/wiki/IEEE_802.15.4] |
 | Xamarin Forms|C# Framework to develop cross platform mobile applications|[https://docs.microsoft.com/it-it/xamarin/xamarin-forms/] |
 
 
