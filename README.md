@@ -5,16 +5,16 @@ Official repository for the 2020 IOT Big project
 # Authors
 | Author |Email| Linkedin |
 | ------ | ------ |------|
-| Giulio Serra| serra.1904089@studenti.uniroma1.it|[https://www.linkedin.com/in/giulio-serra-02966b151/] |
+| Giulio Serra| serra.1904089@studenti.uniroma1.it|https://www.linkedin.com/in/giulio-serra-02966b151/ |
 | Simone Bartolini| email_placeholder|[linkedin_placeholder] |
-| Gabriele Ursini| email_placeholder|[linkedin_placeholder] |
+| Gabriele Ursini| ursini.1751600@studenti.uniroma1.it|https://www.linkedin.com/in/gabriele-ursini-08578a1a3/ |
     
-This project models a distributed system to enhance the experience of a tour inside a museum, provinding the visitors with a number of informations for each art piece through a mobile app and an IOT sensor placed on each piece.
+This project models a distributed system to enhance the experience of a tour inside a museum joined with the collection of info for academic purposes along with the usual tour experience: the user can so enjoy the tour while getting all the research data he/she needs. This is basically implemented through a mobile app and an IoT sensor placed on each piece.
 
 It also provides informations to the curator (or administrator) of the museum, mainly:
 
 - All the visits that took place in the museum.
-- The most viewed pieces along with all the favourite routes inside the museum/exihibition.
+- The most viewed pieces along with all the favourite routes inside the museum/exhibition.
 - A report on the sensors status.
 
 ### Repo Structure
