@@ -35,7 +35,7 @@ It also provides informations to the curator (or administrator) of the museum, m
 | Node.js | javascript variation, used to buid the application logic.|[https://en.wikipedia.org/wiki/Node.js] |
 | Firebase.com |all-in-one solution that provides both storage and code execution capabilities| [https://firebase.google.com] 
 | React Web| Framework developed by facebook to build web app using Javascript |[https://it.reactjs.org] |
-| RIOT OS| OS for embedded device|[https://riot-os.org] |
+| RIOT OS| OS for embedded devices|[https://riot-os.org] |
 | COAP|Comunication protocol for small devices|[https://en.wikipedia.org/wiki/Constrained_Application_Protocol] |
 
 
