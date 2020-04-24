@@ -23,7 +23,7 @@ The analysis will cover estimations both from the perspective of the whole syste
 
     - *Data storing*: the system will need to keep track of what art pieces have been visited in a tour by each user, information in many forms (documents, pictures) about all the art pieces exposed by the museum, and control information about the beacon sensors. Basing on a unit measure of $/GiB, a cost comparison can be carried out in order to adopt the most convenient cloud service provider.
     - *Messages exchange*: the overall cloud infrastructure will exchange messages with the users, the beacons and the web application during its lifecycle, getting and sending information from them. Similarly to data storing, a measurement based on $/message can be done and used to minimize the costs.
-    - *COAP bridge*: the beacons control information needs to be bridged from the COAP gateway to the cloud infrastructure by a program running on a host machine; the cost of hosting has to be included in the total expense.
+    - *IPv6 bridge*: the beacons control information needs to be bridged from the IPv6 gateway to the cloud infrastructure by a program running on a host machine; the cost of hosting has to be included in the total expense.
 
     The overall cost will be computed by the sum of these three components and compared for various available provider choices. Another approach during the evaluation process, different from the simple cost minimization, could be studying the cost requirements crossed with the user ones, and act a tradeoff based on what aspects are more relevant to provide the user a good experience (e.g. spend more for a provider with better latency and invest less in the quality of the beacons).
     
@@ -53,7 +53,7 @@ By the analysis of these three main requisites, the following properties require
 
 4. **Statistics accuracy**: correctness is required from the perspective of curators too; the statistics retrieved by each visit will be used for trend studies and improvement of the experience, so they have to be precise and complete;
 
-5. **Practicity**: the service should appear to the user as simple as possible to use, to contribute with the easiness of collecting information from the perspective of the user. Due to this, an extremely user-friendly interface and easing as much as possible the overall process are crucial aspects.
+5. **Practicality**: the service should appear to the user as simple as possible to use, to contribute with the easiness of collecting information from the perspective of the user. Due to this, an extremely user-friendly interface and easing as much as possible the overall process are crucial aspects.
 
 
 These aspects, strongly linked with the experience of the user and his/her needs, can be directly evaluated by user-driven research, retrieving feedbacks during a test phase and basing studies and, where convenient, successive improvements to the system in order to provide a more enjoyable service.
