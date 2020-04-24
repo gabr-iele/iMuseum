@@ -11,6 +11,8 @@ The system also provides to the curator of the museum/exhibition all the informa
 
 Here is shown a visual representation of the system’s architecture: 
 
+ ![Tux, the Linux mascot](/assets/images/tux.png)
+
 starting from the right we have a variable number of IOT boards (one on each piece) that communicates to a mobile app using the bluetooth beacon mode: once a visitor comes near a piece, the mobile application will ask to the user if he/she want to know more informations about it, if it’s the case, the system will automatically record the preference and provide a comprehensive list of informations about the piece.
 
 All the informations about the user and the visits can be easily seen by the curator of the museum using a web app that also provides informations about the status of the sensors, notifying the administrator about possible failures of one or more of the sensors.
