@@ -11,7 +11,10 @@ The system also provides to the curator of the museum/exhibition all the informa
 
 Here is shown a visual representation of the system’s architecture: 
 
- ![Tux, the Linux mascot](https://github.com/Giulio64/IOT2020BigProject/blob/master/Architecture/src/architecture.png)
+ 
+<div align="center">
+<img src="https://github.com/Giulio64/IOT2020BigProject/blob/master/Architecture/src/architecture.png" >
+</div>
 
 starting from the right we have a variable number of IOT boards (one on each piece) that communicates to a mobile app using the bluetooth beacon mode: once a visitor comes near a piece, the mobile application will ask to the user if he/she want to know more informations about it, if it’s the case, the system will automatically record the preference and provide a comprehensive list of informations about the piece.
 
