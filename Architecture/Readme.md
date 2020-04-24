@@ -45,3 +45,44 @@ The visitor will use his/her own smartphone (it can either run iOS or Android) o
 ### Category: Cloud Component
 
 The COAP Bridge is in charge of receiving data from the COAP gateway and forwards them to the Application login tier using the HTTP and REST protocol.
+
+## Application Logic
+### Category: Cloud Component
+
+The Application Logic tier is in charge to handle all the request coming via REST protocol, mainly to all the resources/data inside the storage, it’s deployed inside the firebase cloud infrastructure (https://firebase.google.com).
+
+
+## Storage
+### Category: Cloud Component
+Is in charge of the persistence of the data about the sensors status, visitors identities, pieces images, pieces documents etc.. it also deployed inside the FCI (https://firebase.google.com)
+
+## Web App
+### Category: End-user component
+
+It displays all the informations to a curator of a museum/exhibition about all the visits, (in particular the preferred routes in each visit), the status of all the IOT sensors and finally a curator can create/ delete sensors inside the museum.
+
+# Software Components
+
+## RIOT OS
+RiotOS (https://www.riot-os.org) is operative system used as base to write firmwares for a variety of embedded boards in C language, it’s used to send data from the bluetooth nodes and from the COAP gateway to the COAP bridge. 
+
+## COAP 
+It’s a constrained protocol to let nodes to communicate to the wider internet(https://en.wikipedia.org/wiki/Constrained_Application_Protocol),it's used to let the edge network communicate with the cloud infrastructure.
+
+## Ponte
+Eclipse framework(https://www.eclipse.org/ponte/) that receives COAP data and forward them to the cloud using REST, used to bridge the gap between the edge of the IOT system and CLOUD infrastructure.
+
+## REST
+It’s an architecture that let web service communicate, it’s the the base form of communication(over the HTTP protocol) between all the elements inside the cloud and the end-user presentation elements (https://en.wikipedia.org/wiki/Representational_state_transfer).
+
+## Xamarin Forms
+It a framework that translate C# (OOP Language) at runtime to a native mobile device (can either be iOS or Android), used as a base to build the presentation to the user of the mobile app (https://docs.microsoft.com/it-it/xamarin/xamarin-forms/).
+
+## Javascript
+High-level programming language used both in the application logic and the presentation to user in the form of the web app(https://en.wikipedia.org/wiki/JavaScript).
+
+## React Web
+Framework to build interfaces combining HTML for the GUI and javascript for the scripting logic, used to build the web application to consult informations and data for the web app (https://en.wikipedia.org/wiki/JavaScript).
+
+
+
