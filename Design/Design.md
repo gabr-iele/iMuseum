@@ -29,19 +29,19 @@ We designed two personas representing the two categories of users of our product
 
 ### Visitor persona
 
-![Visitor persona](/src/visitor_persona.svg)
+![Visitor persona](src/visitor_persona.svg)
 
 ### Curator persona
 
-![Curator persona](/src/curator_persona.svg)
+![Curator persona](src/curator_persona.svg)
 
 # Storyboards
 The following storyboards illustrate the interaction of the visitors and of the curators with the product, showing how it can improve the experience of the firsts and the work of the seconds.
 
 ### Visitor storyboard
 
-![Visitor storyboard](/src/visitor_storyboard.svg)
+![Visitor storyboard](src/visitor_storyboard.svg)
 
 ### Curator storyboard
 
-![Curator storyboard](/src/curator_storyboard.svg)
+![Curator storyboard](src/curator_storyboard.svg)
