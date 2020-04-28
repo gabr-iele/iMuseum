@@ -33,7 +33,6 @@ The Bluetooth IOT board is in charge of beaming data using the bluetooth beacon 
 The board that can best handle both the data transmission is the nRF52840DK (https://www.nordicsemi.com/Software-and-Tools/Development-Kits/nRF52840-DK) 
 that can handle both bluetooth and low-data wireless transmission.
 
-It also runs a RIOT OS firmware to detect visitor proximity and send telemetry data about the board’s status.
 
 
 ## IPV6 Gateway Board
