@@ -58,6 +58,8 @@ By the analysis of these three main requisites, the following properties require
 
 These aspects, strongly linked with the experience of the user and his/her needs, can be directly evaluated by user-driven research, retrieving feedbacks during a test phase and basing studies and, where convenient, successive improvements to the system in order to provide a more enjoyable service.
 
+**Important**: due to the current emergency, whether it will not be possible to deploy the application in a real-world scenario, some modifications will be applied to the user feedback retrieval. In particular, a user interface with appropriate logic below simulating the arriving of the desired info about art pieces: in this way, the users will be able to try a service as near as possible to the real one and evaluate, with a good margin of error, the metrics defined above. For the statistics dashboard the situation is slightly different, since it is not possible to retrieve real and useful statistics; due to this, aspects like accuracy or usefulness may not be evaluated in a worst-case scenario.
+
 
 ## Security concerns
 
