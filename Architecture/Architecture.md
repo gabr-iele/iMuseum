@@ -39,7 +39,10 @@ It also runs a RIOT OS firmware to detect visitor proximity and send telemetry d
 ## IPV6 Gateway Board
 ### Category: Edge Component
 
-The IPV6 gateway board (https://www.iot-lab.info/hardware/m3/) receives all the informations of local network of the museum and forward them to the internet. It also run a RIOT application to detect incoming data from the sensors status, scattered in the exhibition.
+The IPV6 gateway board (https://www.st.com/en/evaluation-tools/stm32-nucleo-boards.html/) receives all the informations of local network of the museum and forward them to the internet. It also run a RIOT application to detect incoming data from the sensors status, scattered in the exhibition.
+
+The real-world device deployed in the net uses a STM nucleo board(https://www.st.com/en/evaluation-tools/p-nucleo-wb55.html) pared with a ethernet module (https://www.ebay.it/itm/Arduino-Compatibile-Modulo-scheda-ethernet-rete-ENC28J60-LAN-Atmel-STM-ARM-/222596170068).
+
 
 ## Smartphone (Mobile App)
 ### Category: End-user component
