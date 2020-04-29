@@ -9,6 +9,8 @@ Official repository for the 2020 IOT Big project
 | Simone Bartolini| bartolini.1752197@studenti.uniroma1.it|https://www.linkedin.com/in/simone-bartolini-9628561a3 |
 | Gabriele Ursini| ursini.1751600@studenti.uniroma1.it|https://www.linkedin.com/in/gabriele-ursini-08578a1a3/ |
 
+**Design advisor**: [Binu Nejat](https://www.linkedin.com/in/binu-nejat-687445108/)
+
 This project models a distributed system to enhance the experience of a tour inside a museum joined with the collection of info for academic purposes along with the usual tour experience: the user can so enjoy the tour while getting all the research data he/she needs. This is basically implemented through a mobile app and an IoT sensor placed on each piece.
 
 It also provides informations to the curator (or administrator) of the museum, mainly:
