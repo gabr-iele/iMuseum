@@ -46,12 +46,12 @@ The real-world device deployed in the net uses a STM nucleo board(https://www.st
 ## Smartphone (Mobile App)
 ### Category: End-user component
 
-The visitor will use his/her own smartphone (it can either run iOS or Android) obtain the identifier of a piece, using bluetooth, and uses it to obtain all the related informations from the CLOUD structure.
+The visitor will use his/her own smartphone (it can either run iOS or Android) to obtain the identifier of a piece using bluetooth, and uses it to obtain all the related informations from the CLOUD structure.
 
 ## COAP Bridge
 ### Category: Cloud Component
 
-The COAP Bridge is in charge of receiving data from the COAP gateway and forwards them to the Application login tier using the HTTP and REST protocol.
+The COAP Bridge is in charge of receiving data from the COAP gateway and forwards them to the Application logic tier using the HTTP and REST protocol.
 
 ## Application Logic
 ### Category: Cloud Component
@@ -74,7 +74,7 @@ It displays all the informations to a curator of a museum/exhibition about all t
 RiotOS (https://www.riot-os.org) is operative system used as base to write firmwares for a variety of embedded boards in C language, it’s used to send data from the bluetooth nodes and from the COAP gateway to the COAP bridge. 
 
 ## COAP 
-It’s a constrained protocol to let nodes to communicate to the wider internet(https://en.wikipedia.org/wiki/Constrained_Application_Protocol),it's used to let the edge network communicate with the cloud infrastructure.
+It’s a constrained protocol to let nodes communicate to the wider internet(https://en.wikipedia.org/wiki/Constrained_Application_Protocol),it's used to let the edge network communicate with the cloud infrastructure.
 
 ## Ponte
 Eclipse framework(https://www.eclipse.org/ponte/) that receives COAP data and forward them to the cloud using REST, used to bridge the gap between the edge of the IOT system and CLOUD infrastructure.
@@ -83,7 +83,7 @@ Eclipse framework(https://www.eclipse.org/ponte/) that receives COAP data and fo
 It’s an architecture that let web service communicate, it’s the the base form of communication(over the HTTP protocol) between all the elements inside the cloud and the end-user presentation elements (https://en.wikipedia.org/wiki/Representational_state_transfer).
 
 ## Xamarin Forms
-It a framework that translate C# (OOP Language) at runtime to a native mobile device (can either be iOS or Android), used as a base to build the presentation to the user of the mobile app (https://docs.microsoft.com/it-it/xamarin/xamarin-forms/).
+It's a framework that translate C# (OOP Language) at runtime to a native mobile device (can either be iOS or Android), used as a base to build the presentation to the user of the mobile app (https://docs.microsoft.com/it-it/xamarin/xamarin-forms/).
 
 ## Javascript
 High-level programming language used both in the application logic and the presentation to user in the form of the web app(https://en.wikipedia.org/wiki/JavaScript).
