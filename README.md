@@ -25,7 +25,7 @@ It also provides informations to the curator (or administrator) of the museum, m
 
 ### Important links
 
-* Product presentation: TBD
+* Product presentation: https://youtu.be/Y6-fTJBDDO8
 * Technical approach presentation: https://youtu.be/nDMt7QFnYCQ
 
 ### Tech
