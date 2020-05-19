@@ -38,6 +38,6 @@ It also provides informations to the curator (or administrator) of the museum, m
 | Firebase.com |all-in-one solution that provides both storage and code execution capabilities| [https://firebase.google.com]
 | React Web| Framework developed by facebook to build web app using Javascript |[https://it.reactjs.org] |
 | RIOT OS| OS for embedded devices|[https://riot-os.org] |
-| COAP|Comunication protocol for small devices|[https://en.wikipedia.org/wiki/Constrained_Application_Protocol] |
+| MQTT|Lightweight comunication protocol of publish/subscriber type|[http://mqtt.org] |
 |IEEE 802.15.4|Low rate wifi protocol for small embedded devices |[https://it.wikipedia.org/wiki/IEEE_802.15.4] |
 | Xamarin Forms|C# Framework to develop cross platform mobile applications|[https://docs.microsoft.com/it-it/xamarin/xamarin-forms/] |
