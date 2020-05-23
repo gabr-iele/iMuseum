@@ -21,9 +21,10 @@ It also provides informations to the curator (or administrator) of the museum, m
 
 ### Repo Structure
 
-* [[Architecture](https://github.com/Giulio64/IOT2020BigProject/tree/master/Architecture)] Contains the documents describing the architecture.
-* [[Design](https://github.com/Giulio64/IOT2020BigProject/tree/master/Design)] Contains the documents describing the design.
-* [[Evaluation](https://github.com/Giulio64/IOT2020BigProject/tree/master/Evaluation)] Contains the documents describing the evaluation process.
+* [[First Iteration](https://github.com/Giulio64/IOT2020BigProject/tree/master/First%20Iteration)] Contains all the documents for the first iteration of the project
+
+* [[Presentation](https://github.com/Giulio64/IOT2020BigProject/tree/master/Presentation)] Contains all the piece of code for the presentation tier of the architecture
+
 
 ### Important links
 
