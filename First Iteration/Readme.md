@@ -1,4 +1,4 @@
-## Structure
+## Structure - First Iteration
 
 This folders contains all the document for the first iteration of the project.
 
