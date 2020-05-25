@@ -10,7 +10,7 @@ We decided to address the functionalities of the application mainly to the provi
 
 - "Why COAP being an async app?"
 
-// TODO
+The initial architecture employed COAP in the communication between the local gateway in the museum and the backend. Since the "alive" messages sent by the boards have an asynchronous nature, we decided to change the communication protocol to adapt to this aspect; in the new architecture, the gateway will communicate directly with the built-in broker of the backend through MQTT.
 
 - "You are doing sampling even when nobody is there. Is this energy efficient enough?"
 
@@ -23,6 +23,10 @@ That's a really important concern in terms of battery saving: in a scenario of f
 
 ## 2) Changes to architecture, design, evaluation
 
+(**Architecture**) Substitution of the protocol in the communication from IPv6 Gateway to backend, from COAP to MQTT;
+(**Architecture**) Introduction of a function in the dashboard to update the hours of opening and closure for the boards;
+(**Architecture**) Introduction of a function for the boards to start/stop their acrivity, basing on the museum's schedules;
+(**Evaluation**) Introduction of *energy consumption* as evaluation parameter for the BLE boards/beacons.
 // TODO
 
 
