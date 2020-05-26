@@ -2,7 +2,7 @@
 
 This document provides the updates done to all the aspects of the project (architecture, design, evaluation) made from the first delivery, basing on the suggestions received in order to improve the idea and the service implementing it.
 
-## 1) Comments received and adjustations
+## 1) Comments received and adjustments
 
 - "I like the features for curators. I would focus on it."
 
@@ -37,7 +37,9 @@ We analyzed other technologies that we could use to address the problems we foun
 
 ## 3) Technical work done so far
 
-// TODO
+Set up of the cloud architecture: the data storage, the login microservice, the files storage and the server to host the Application Logic tier.
+
+The curator front-end application:set up of the project using the react framework, the login and signup process along with the first drafts of UI design.
 
 
 ## 4) Evaluation done so far
