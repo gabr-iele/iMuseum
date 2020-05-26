@@ -27,6 +27,7 @@ We analyzed other technologies that we could use to address the problems we foun
 
 ## 2) Changes to architecture, design, evaluation
 
+(**Design**) Added more information about the interviews;
 (**Architecture**) Substitution of the protocol in the communication from IPv6 Gateway to backend, from COAP to MQTT;
 (**Architecture**) Introduction of a function in the dashboard to update the hours of opening and closure for the boards;
 (**Architecture**) Introduction of a function for the boards to start/stop their activity, basing on the museum's schedules;
