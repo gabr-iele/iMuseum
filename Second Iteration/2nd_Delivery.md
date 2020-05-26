@@ -22,7 +22,7 @@ We did multiple interviews, instead of using questionnaires, both at the beginni
 
 - "BLE is too common among projects"
 
-We analyzed other technologies that we could use to address the problems we found in the experience of the users of the museum. At the end we decided to stick with BLE Beacon as we think it is the best technology to implement our ideas. More information on this can be found in the document [Why_beacons.md](./Why_beacons.md).
+We analyzed other technologies that we could use to address the problems we found in the experience of the users of the museum. In the end we decided to stick with BLE Beacon as we think it is the best technology to implement our ideas. More information on this can be found in the document [Why_beacons.md](./Why_beacons.md).
 
 
 ## 2) Changes to architecture, design, evaluation
