@@ -27,25 +27,42 @@ We analyzed other technologies that we could use to address the problems we foun
 
 ## 2) Changes to architecture, design, evaluation
 
-(**Design**) Added more information about the interviews;
+(**Design**) Added more information about the interviews;  
 (**Architecture**) Substitution of the protocol in the communication from IPv6 Gateway to backend, from COAP to MQTT;
 (**Architecture**) Introduction of a function in the dashboard to update the hours of opening and closure for the boards;
 (**Architecture**) Introduction of a function for the boards to start/stop their activity, basing on the museum's schedules;
 (**Evaluation**) Introduction of *energy consumption* as evaluation parameter for the BLE boards/beacons.
-// TODO
 
 
 ## 3) Technical work done so far
 
-Set up of the cloud architecture: the data storage, the login microservice, the files storage and the server to host the Application Logic tier.
+- Set up of the cloud architecture: the data storage, the login microservice, the files storage and the server to host the Application Logic tier.
 
-The curator front-end application:set up of the project using the react framework, the login and signup process along with the first drafts of UI design.
+- The curator front-end application: set up of the project using the react framework, the login and signup process along with the first drafts of UI design.
 
 
 ## 4) Evaluation done so far
 
-// TODO
+### Cloud infrastracture costs
 
+We choosed to employ Firebase as cloud backend in our final infrastructure. Given the work done at the time of the compilation of this document, the following costs have been taken into account:
+
+  - Authentication: **$0.06/verification**
+  - Storage: **$0.026/GB**
+  - Realtime database: **$5/GB**
+  - Functions invocation: **$0.40/million**
+  - Hosting: **$0.026/GB**
+  
+Given an estimation of the visitors per year and the number of pieces of the museum, a total cost can be computed by taking into account the number of interactions that need to be processed. Using the example of the Sapienza Museum, dealing with an hypothetic average number of 200 visitors per day, a number of pieces of about 1200 and an optimistic opening time of 300 days/year, can be computed:
+  - Less than **$5/year** for the realtime database, dealing with the storing of beacons rilevations;
+  - 300 * 1200 * 200 = 72 million function invocations, corresponging to about **$30/year** (notice that this is a borderline scenario, hypothizing all users interacting with all the pieces in the museum);
+  - A not excessive cost for the storage service, containing the info sent to users regarding the pieces (either text and pictures): this cost estimation is strictly linked to the characteristics of the museum (number of pieces, amount and type of information, quality of the same, and so on);
+  - Negligible cost for the dashboard authentication
+  - Negligible cost for the dashboard hosting
+
+It is interesting to look how the overall cloud costs evaluation highly depends on the type of museum: its dimension, how many pieces it exposes, the amount of days it is open, etc. In particular, it is notable that statistics on the flow of visitors inside the museum higly affects the expected cost.
+
+N.B. In the perspective of a real deployment scenario, the Pay-As-You-Go plan for Firebase has been employed to compute the costs, looking at the case of a long-term usage of the application.
 
 ## 5) Evaluation still to do
 
