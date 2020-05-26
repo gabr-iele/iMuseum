@@ -29,7 +29,7 @@ We analyzed other technologies that we could use to address the problems we foun
 
 (**Architecture**) Substitution of the protocol in the communication from IPv6 Gateway to backend, from COAP to MQTT;
 (**Architecture**) Introduction of a function in the dashboard to update the hours of opening and closure for the boards;
-(**Architecture**) Introduction of a function for the boards to start/stop their acrivity, basing on the museum's schedules;
+(**Architecture**) Introduction of a function for the boards to start/stop their activity, basing on the museum's schedules;
 (**Evaluation**) Introduction of *energy consumption* as evaluation parameter for the BLE boards/beacons.
 // TODO
 
