@@ -18,7 +18,7 @@ That's a really important concern in terms of battery saving: in a scenario of f
 
 - "Questionnaire?"
 
-// TODO
+We did multiple interviews, instead of using questionnaires, both at the beginning of the design phase, to understand the problems in the experience of the visitors of the museum that we could address, and throughout the phase to define and validate the features of our project. The design document has been updated to provide more details about the interviews.
 
 
 ## 2) Changes to architecture, design, evaluation
@@ -43,4 +43,3 @@ That's a really important concern in terms of battery saving: in a scenario of f
 ## 5) Evaluation still to do
 
 // TODO
-
