@@ -1,6 +1,6 @@
 ## Structure - Second Iteration
 
-This folders contains all the document for the first iteration of the project.
+This folders contains all the document for the second iteration of the project.
 
 * [[Architecture](TBD)] Contains the documents describing the architecture.
 * [[Design](TBD)] Contains the documents describing the design.
