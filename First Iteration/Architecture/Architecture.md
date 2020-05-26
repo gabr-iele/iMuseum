@@ -8,7 +8,7 @@ Here is shown a visual representation of the system’s architecture:
 
  
 <div align="center">
-<img src="https://github.com/Giulio64/IOT2020BigProject/edit/master/First%20Iteration/Architecture/src/architecture.png" >
+<img src="https://github.com/Giulio64/IOT2020BigProject/blob/master/First%20Iteration/Architecture/src/architecture.png" >
 </div>
 
 starting from the right we have a variable number of IOT boards (one on each piece) that communicates to a mobile app using the Bluetooth beacon mode: once a visitor comes near a piece, the mobile application will ask the user if he/she wants to know more information about it, if it’s the case, the system will automatically record the preference and provide a comprehensive list of information about the piece.
