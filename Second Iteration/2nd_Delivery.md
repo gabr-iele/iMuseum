@@ -20,6 +20,10 @@ That's a really important concern in terms of battery saving: in a scenario of f
 
 We did multiple interviews, instead of using questionnaires, both at the beginning of the design phase, to understand the problems in the experience of the visitors of the museum that we could address, and throughout the phase to define and validate the features of our project. The design document has been updated to provide more details about the interviews.
 
+- "BLE is too common among projects"
+
+We analyzed other technologies that we could use to address the problems we found in the experience of the users of the museum. At the end we decided to stick with BLE Beacon as we think it is the best technology to implement our ideas. More information on this can be found in the document [Why_beacons.md](./Why_beacons.md).
+
 
 ## 2) Changes to architecture, design, evaluation
 
