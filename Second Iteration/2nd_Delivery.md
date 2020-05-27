@@ -45,7 +45,7 @@ We analyzed other technologies that we could use to address the problems we foun
 
 ### Cloud infrastracture costs
 
-We choosed to employ Firebase as cloud backend in our final infrastructure. Given the work done at the time of the compilation of this document, the following costs have been taken into account:
+We chose to employ Firebase as cloud backend in our final infrastructure. Given the work done at the time of the compilation of this document, the following costs have been taken into account:
 
   - Authentication: **$0.06/verification**
   - Storage: **$0.026/GB**
@@ -53,23 +53,23 @@ We choosed to employ Firebase as cloud backend in our final infrastructure. Give
   - Functions invocation: **$0.40/million**
   - Hosting: **$0.026/GB**
   
-Given an estimation of the visitors per year and the number of pieces of the museum, a total cost can be computed by taking into account the number of interactions that need to be processed. Using the example of the Sapienza Museum, dealing with an hypothetic average number of 200 visitors per day, a number of pieces of about 1200 and an optimistic opening time of 300 days/year, can be computed:
+Given an estimation of the visitors per year and the number of pieces of the museum, a total cost can be computed by taking into account the number of interactions that need to be processed. Using the example of the Sapienza Museum, dealing with a hypothetic average number of 200 visitors per day, a number of pieces of about 1200 and an optimistic opening time of 300 days/year, can be computed:
   - Less than **$5/year** for the realtime database, dealing with the storing of beacons rilevations;
   - 300 * 1200 * 200 = 72 million function invocations, corresponging to about **$30/year** (notice that this is a borderline scenario, hypothizing all users interacting with all the pieces in the museum);
   - A not excessive cost for the storage service, containing the info sent to users regarding the pieces (either text and pictures): this cost estimation is strictly linked to the characteristics of the museum (number of pieces, amount and type of information, quality of the same, and so on);
   - Negligible cost for the dashboard authentication
   - Negligible cost for the dashboard hosting
 
-It is interesting to look how the overall cloud costs evaluation highly depends on the type of museum: its dimension, how many pieces it exposes, the amount of days it is open, etc. In particular, it is notable that statistics on the flow of visitors inside the museum higly affects the expected cost.
+It is interesting to look at how the overall cloud costs evaluation highly depends on the type of museum: its dimension, how many pieces it exposes, the number of days it is open, etc. In particular, it is notable that statistics on the flow of visitors inside the museum highly affects the expected cost.
 
-N.B. In the perspective of a real deployment scenario, the Pay-As-You-Go plan for Firebase has been employed to compute the costs, looking at the case of a long-term usage of the application.
+N.B. From the perspective of a real deployment scenario, the Pay-As-You-Go plan for Firebase has been employed to compute the costs, looking at the case of long-term usage of the application.
 
 ## 5) Evaluation still to do
 
-Until the 3rd delivery, we plan to evaluate the remaining aspects of the complete application, once the various components still to realize will be ready. Precisely, each time a new component will be completed, we plan to evaluate the metrics for the specific component and check whether and how it modifies the evaluation done for the other components and the overall system. In particular we plan to carry out an evaluation on:
+Until the 3rd delivery, we plan to evaluate the remaining aspects of the complete application, once the various components still to realize will be ready. Precisely, each time a new component will be completed, we plan to evaluate the metrics for the specific component and check whether and how it modifies the evaluation done for the other components and the overall system. In particular, we plan to carry out an evaluation on:
 
-  - The beacon components, concerning the various aspects and requirements specified in the evaluation document. Depending by the type of deployment and restriction for the current situation, different type of technologies using BLE may be object of the evaluation;
-  - The user satisfaction for the interfaces, both on the visitor side and the curator one, using prototypes and testing them on an adequately large sample;
-  - The quality of the communication, telling whether the overall flow of messages is acceptable and sustainable, in terms of latency, faults, correctness etc.
+  - The beacon components, concerning the various aspects and requirements specified in the evaluation document. Depending on the type of deployment and restriction for the current situation, different types of technology using BLE may be the object of the evaluation;
+  - The user satisfaction for the interfaces, both on the visitor and the curator side, using prototypes and testing them on an adequately large sample;
+  - The quality of the communication, telling whether the overall flow of messages is acceptable and sustainable, in terms of latency, faults, correctness, etc.
 
 
