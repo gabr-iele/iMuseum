@@ -66,4 +66,10 @@ N.B. In the perspective of a real deployment scenario, the Pay-As-You-Go plan fo
 
 ## 5) Evaluation still to do
 
-// TODO
+Until the 3rd delivery, we plan to evaluate the remaining aspects of the complete application, once the various components still to realize will be ready. Precisely, each time a new component will be completed, we plan to evaluate the metrics for the specific component and check whether and how it modifies the evaluation done for the other components and the overall system. In particular we plan to carry out an evaluation on:
+
+  - The beacon components, concerning the various aspects and requirements specified in the evaluation document. Depending by the type of deployment and restriction for the current situation, different type of technologies using BLE may be object of the evaluation;
+  - The user satisfaction for the interfaces, both on the visitor side and the curator one, using prototypes and testing them on an adequately large sample;
+  - The quality of the communication, telling whether the overall flow of messages is acceptable and sustainable, in terms of latency, faults, correctness etc.
+
+
