@@ -8,7 +8,7 @@ This folders contains all the document for the second iteration of the project.
 
 Link to the previous iteration's documents: https://github.com/Giulio64/IOT2020BigProject/tree/master/First%20Iteration
 
-## Structure - Second Iteration
+## Presentations
 
 * Presentation of the project from a technical point of view https://youtu.be/8RKluKk6v6Q   
 * Presentation of current evaluation and future plans: https://youtu.be/hhZM7ToyfJc
