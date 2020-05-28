@@ -30,10 +30,9 @@ The real-world device deployed in the net uses a STM nucleo board(https://www.st
 Category: End-user component
 The visitor will use his/her own smartphone (it can either run iOS or Android) to obtain the identifier of a piece using Bluetooth, and uses it to obtain all the related information from the CLOUD structure.
 
-## MQTT Broker/Bridge
+## COAP Bridge
 Category: Cloud Component
-The MQTT Bridge is in charge of receiving data from the both from gateway and the application logic and forward them to the right subscribers.
-
+The COAP Bridge is in charge of receiving data from the COAP gateway and forwards them to the Application logic tier using the HTTP and REST protocol.
 
 ## Application Logic
 Category: Cloud Component
@@ -52,11 +51,11 @@ It displays all the information to a curator of a museum/exhibition about all th
 ## RIOT OS
 RiotOS (https://www.riot-os.org) is an operating system used as a base to write firmware for a variety of embedded boards in C language, it’s used to send data from the Bluetooth nodes and from the COAP gateway to the COAP bridge.
 
-## MQTT
-It’s a lightweight publish-subscriber protocol(http://mqtt.org). It’s used both to forward the data coming from the boards, to the Application logic and the other way around.
+## COAP
+It’s a constrained protocol to let nodes communicate to the wider internet(https://en.wikipedia.org/wiki/Constrained_Application_Protocol),it's used to let the edge network communicate with the cloud infrastructure.
 
 ## Ponte
-Eclipse framework(https://www.eclipse.org/ponte/) that receives MQTT data and forward them to the cloud using REST, used both to bridge the gap between the edge of the IOT system and CLOUD infrastructure and ensure a two way communication channel between the Application logic and the boards.
+Eclipse framework(https://www.eclipse.org/ponte/) that receives COAP data and forwards them to the cloud using REST, used to bridge the gap between the edge of the IOT system and CLOUD infrastructure.
 
 ## REST
 It’s an architecture that lets web service communicate, it’s the base form of communication(over the HTTP protocol) between all the elements inside the cloud and the end-user presentation elements (https://en.wikipedia.org/wiki/Representational_state_transfer).
