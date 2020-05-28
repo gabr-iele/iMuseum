@@ -40,8 +40,24 @@ We analyzed other technologies that we could use to address the problems we foun
 
 - The curator front-end application: set up of the project using the react framework, the login and signup process along with the first drafts of UI design.
 
+## 4) Missing functionalities
 
-## 4) Evaluation done so far
+- Smartphone app
+  * Recognizing beacon signal
+  * Showing information about the artwork
+  * Collecting data about the visit
+- Beacon board
+  * Sending beacon signal
+  * Sleep/wake timer
+  * Sending "alive" message
+- Dashboard
+  * Showing statistics about the visits
+  * Updating opening hours
+  * Showing boards status
+
+
+
+## 5) Evaluation done so far
 
 ### Cloud infrastracture costs
 
@@ -64,7 +80,7 @@ It is interesting to look at how the overall cloud costs evaluation highly depen
 
 N.B. From the perspective of a real deployment scenario, the Pay-As-You-Go plan for Firebase has been employed to compute the costs, looking at the case of long-term usage of the application.
 
-## 5) Evaluation still to do
+## 6) Evaluation still to do
 
 Until the 3rd delivery, we plan to evaluate the remaining aspects of the complete application, once the various components still to realize will be ready. Precisely, each time a new component will be completed, we plan to evaluate the metrics for the specific component and check whether and how it modifies the evaluation done for the other components and the overall system. In particular, we plan to carry out an evaluation on:
 
