@@ -29,11 +29,6 @@ It also provides informations to the curator (or administrator) of the museum, m
 * [[Presentation](https://github.com/Giulio64/IOT2020BigProject/tree/master/Presentation)] Contains all the piece of code for the presentation tier of the architecture.
 
 
-### Important links
-
-* [Product presentation](https://youtu.be/Y6-fTJBDDO8)
-* [Technical approach presentation](https://youtu.be/nDMt7QFnYCQ)
-
 ### Tech
 
 | Name |Description | Link |
