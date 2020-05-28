@@ -1,29 +1,28 @@
 # Introduction and System Description
 
 iMuseum is a distributed system to enhance the experience for a visitor in a museum: it uses IOT devices placed on each art piece to provide pieces of information to the user through a mobile app using the Bluetooth beacon mode.
-Once the visit is over, the user will get a report of all the pieces seen in the visit.
 The system also provides to the curator of the museum/exhibition all the information about the devices status, a record of all the visitors along with the path and pieces seen inside the museum, and all the information about the status of the sensors, to help notify the maintenance about possible malfunctions.
 iMuseum Architecture
 Here is shown a visual representation of the system’s architecture:
 
- 
+
 <div align="center">
 <img src="https://github.com/Giulio64/IOT2020BigProject/blob/master/Second%20Iteration/Architecture/src/architecture.png" >
 </div>
 
-starting from the right we have a variable number of IOT boards (one on each piece) that communicates to a mobile app using the Bluetooth beacon mode: once a visitor comes near a piece, the mobile application will ask the user if he/she wants to know more information about it, if it’s the case, the system will automatically record the preference and provide a comprehensive list of information about the piece.
-All the information about the user and the visits can be easily seen by the curator of the museum using a web app that also provides information about the status of the sensors, notifying the administrator about possible failures of one or more of the sensors. The data comes periodically from the beacons to a gateway board with COAP support (one for every museum) and then sent back to a COAP bridge to finally come over HTTP to the Application Logic tier trough REST endpoints, to be stored inside the Storage.
+Starting from the right we have a variable number of IOT boards (one on each piece) that communicates to a mobile app using the Bluetooth beacon mode: once a visitor comes near a piece, the mobile application will ask the user if he/she wants to know more information about it, if it’s the case, the system will automatically record the preference and provide a comprehensive list of information about the piece.
+All the information about the user and the visits can be easily seen by the curator of the museum using a web app that also provides information about the status of the sensors, notifying the administrator about possible failures of one or more of the sensors. The data comes periodically from the beacons through an IPv6 gateway board (one for every museum) to an MQTT Broker/Bridge to finally come over HTTP to the Application Logic tier trough REST endpoints, to be stored inside the Storage.
 
 # Hardware Components
 
 ## Bluetooth IOT Board
 Category: IOT
-The Bluetooth IOT board is in charge of beaming data using the Bluetooth beacon mode (https://en.wikipedia.org/wiki/Bluetooth_low_energy_beacon), providing the information of the piece where it’s placed, it also communicates to a COAP gateway, data about its status through the IEEE_802.15.4 protocol (https://en.wikipedia.org/wiki/IEEE_802.15.4).
+The Bluetooth IOT board is in charge of beaming data using the Bluetooth beacon mode (https://en.wikipedia.org/wiki/Bluetooth_low_energy_beacon), providing the information of the piece where it’s placed, it also communicates to the IPv6 gateway, data about its status through the IEEE_802.15.4 protocol (https://en.wikipedia.org/wiki/IEEE_802.15.4).
 The board that can best handle both the data transmission is the nRF52840DK (https://www.nordicsemi.com/Software-and-Tools/Development-Kits/nRF52840-DK) that can handle both Bluetooth and low-data wireless transmission.
 
-## IPV6 Gateway Board
+## IPv6 Gateway Board
 Category: Edge Component
-The IPV6 gateway board (https://www.st.com/en/evaluation-tools/stm32-nucleo-boards.html/) receives all the information of the local network of the museum and forward them to the internet. It also run a RIOT application to detect incoming data from the status of the sensors, scattered in the exhibition.
+The IPv6 gateway board (https://www.st.com/en/evaluation-tools/stm32-nucleo-boards.html/) receives all the information of the local network of the museum and forward them to the internet. It also run a RIOT application to detect incoming data from the status of the sensors, scattered in the exhibition.
 The real-world device deployed in the net uses a STM nucleo board(https://www.st.com/en/evaluation-tools/p-nucleo-wb55.html) pared with an ethernet module (https://www.ebay.it/itm/Arduino-Compatibile-Modulo-scheda-ethernet-rete-ENC28J60-LAN-Atmel-STM-ARM-/222596170068).
 
 ## Smartphone (Mobile App)
@@ -50,7 +49,7 @@ It displays all the information to a curator of a museum/exhibition about all th
 # Software Components
 
 ## RIOT OS
-RiotOS (https://www.riot-os.org) is an operating system used as a base to write firmware for a variety of embedded boards in C language, it’s used to send data from the Bluetooth nodes and from the COAP gateway to the COAP bridge.
+RiotOS (https://www.riot-os.org) is an operating system used as a base to write firmware for a variety of embedded boards in C language, it’s used to send data from the Bluetooth nodes and from the IPv6 gateway to the MQTT bridge.
 
 ## MQTT
 It’s a lightweight publish-subscriber protocol(http://mqtt.org). It’s used both to forward the data coming from the boards, to the Application logic and the other way around.
