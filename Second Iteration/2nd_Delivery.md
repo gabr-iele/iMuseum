@@ -28,9 +28,9 @@ We analyzed other technologies that we could use to address the problems we foun
 ## 2) Changes to architecture, design, evaluation
 
 (**Design**) Added more information about the interviews;  
-(**Architecture**) Substitution of the protocol in the communication from IPv6 Gateway to backend, from COAP to MQTT;
-(**Architecture**) Introduction of a function in the dashboard to update the hours of opening and closure for the boards;
-(**Architecture**) Introduction of a function for the boards to start/stop their activity, basing on the museum's schedules;
+(**Architecture**) Substitution of the protocol in the communication from IPv6 Gateway to backend, from COAP to MQTT;  
+(**Architecture**) Introduction of a function in the dashboard to update the hours of opening and closure for the boards;  
+(**Architecture**) Introduction of a function for the boards to start/stop their activity, basing on the museum's schedules;  
 (**Evaluation**) Introduction of *energy consumption* as evaluation parameter for the BLE boards/beacons.
 
 
@@ -52,7 +52,7 @@ We chose to employ Firebase as cloud backend in our final infrastructure. Given 
   - Realtime database: **$5/GB**
   - Functions invocation: **$0.40/million**
   - Hosting: **$0.026/GB**
-  
+
 Given an estimation of the visitors per year and the number of pieces of the museum, a total cost can be computed by taking into account the number of interactions that need to be processed. Using the example of the Sapienza Museum, dealing with a hypothetic average number of 200 visitors per day, a number of pieces of about 1200 and an optimistic opening time of 300 days/year, can be computed:
   - Less than **$5/year** for the realtime database, dealing with the storing of beacons rilevations;
   - 300 * 1200 * 200 = 72 million function invocations, corresponging to about **$30/year** (notice that this is a borderline scenario, hypothizing all users interacting with all the pieces in the museum);
@@ -71,5 +71,3 @@ Until the 3rd delivery, we plan to evaluate the remaining aspects of the complet
   - The beacon components, concerning the various aspects and requirements specified in the evaluation document. Depending on the type of deployment and restriction for the current situation, different types of technology using BLE may be the object of the evaluation;
   - The user satisfaction for the interfaces, both on the visitor and the curator side, using prototypes and testing them on an adequately large sample;
   - The quality of the communication, telling whether the overall flow of messages is acceptable and sustainable, in terms of latency, faults, correctness, etc.
-
-
