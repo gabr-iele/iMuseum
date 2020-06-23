@@ -19,12 +19,12 @@
 #include "net/ipv6/addr.h"
 #include "jsmn.h"
 
-#define BROKER_PORT (1885U)
-#define OPENING_HOURS_TOPIC ("opening_hours")
-#define ALIVE_TOPIC ("alive")
-#define ALIVE_PERIOD (5)
+#define BROKER_PORT             (1885U)
+#define OPENING_HOURS_TOPIC     ("opening_hours")
+#define ALIVE_TOPIC             ("alive")
+#define ALIVE_PERIOD            (5)
 
-#define STOP_MSG (1)
+#define STOP_MSG                (1)
 
 static char emcute_stack[THREAD_STACKSIZE_DEFAULT];
 static char mqtt_stack[THREAD_STACKSIZE_DEFAULT];
@@ -36,7 +36,7 @@ struct tm open_hour;
 struct tm close_hour;
 
 
-/* Emcute thread. */
+/* Emcute thread */
 static void *emcute_thread(void *arg) {
     (void)arg;
     emcute_run(EMCUTE_PORT, EMCUTE_ID);
@@ -47,32 +47,45 @@ static void *emcute_thread(void *arg) {
 static void close_cb(void *arg);
 static void open_cb(void *arg);
 
+/* Close hour alarm callback */
 static void close_cb(void *arg) {
     (void)arg;
 
     puts("closing");
+    
+    /* Stop beacon */
     stop_beacon();
+
+    /* Stop mqtt */
     msg_t msg;
     msg.content.value = STOP_MSG;
     msg_send(&msg, mqtt_pid);
 
+    /* Update close hour alarm */
     close_hour.tm_mday += 1;
     rtc_tm_normalize(&close_hour);
 
-    //start open hour alarm
+    /* Start open hour alarm */
     rtc_set_alarm(&open_hour, open_cb, NULL);
 }
 
+/* Open hour alarm callback */
 static void open_cb(void *arg) {
     (void)arg;
 
     puts("opening");
+
+    /* Start beacon */
     start_beacon();
+
+    /* Start mqtt */
     thread_wakeup(mqtt_pid);
+
+    /* Update open hour alarm */
     open_hour.tm_mday += 1;
     rtc_tm_normalize(&open_hour);
 
-    //start open hour alarm
+    /* Start close hour alarm */
     rtc_set_alarm(&close_hour, close_cb, NULL);
 }
 
@@ -84,23 +97,23 @@ static int jsoneq(const char *json, jsmntok_t *tok, const char *s) {
     return -1;
 }
 
+/* Opening hours on publish callback */
 static void on_pub(const emcute_topic_t *topic, void *data, size_t len) {
     char *in = (char *)data;
 
+    /* Print message */
     printf("### got publication for topic '%s' [%i] ###\n",
            topic->name, (int)topic->id);
     printf("%s\n", in);
 
-
+    /* Clear cyrrent alarm */
     rtc_clear_alarm();
 
-    //initialize open/close hour with current hour
+    /* initialize open/close hour with current hour */
     rtc_get_time(&close_hour);
     rtc_get_time(&open_hour);
 
-
-
-
+    /* Parse message */
     jsmn_parser p;
     jsmntok_t t[128]; /* We expect no more than 128 JSON tokens */
 
@@ -154,62 +167,58 @@ static void on_pub(const emcute_topic_t *topic, void *data, size_t len) {
     }
 
 
-
-    //set close hour
+    /* Set close hour */
     rtc_tm_normalize(&close_hour);
-
     printf("%d/%d/%d %d:%d:%d\n", close_hour.tm_mday, close_hour.tm_mon,
     close_hour.tm_year+1900, close_hour.tm_hour, close_hour.tm_min, close_hour.tm_sec);
 
 
-    //set open hour
+    /* Set open hour */
     open_hour.tm_mday += 1;
     rtc_tm_normalize(&open_hour);
-
     printf("%d/%d/%d %d:%d:%d\n", open_hour.tm_mday, open_hour.tm_mon,
     open_hour.tm_year+1900, open_hour.tm_hour, open_hour.tm_min, open_hour.tm_sec);
 
-    //start close hour alarm
+    /* start close hour alarm */
     rtc_set_alarm(&close_hour, close_cb, NULL);
 }
 
-/* Mqtt thread. */
+/* Mqtt thread */
 static void *mqtt_thread(void *arg) {
+    /* Initialize IPC message queue */
     msg_t msg;
     msg_t msg_queue[8];
     msg_init_queue(msg_queue, 8);
 
-    /* initialize our subscription buffers */
+    /* Initialize our subscription buffers */
     memset(subscriptions, 0, (NUMOFSUBS * sizeof(emcute_sub_t)));
 
-    /* start the emcute thread */
+    /* Start the emcute thread */
     emcute_pid = thread_create(emcute_stack, sizeof(emcute_stack), EMCUTE_PRIO, 0,
                                emcute_thread, NULL, "emcute");
 
-    //mqtt connect
+    /* Connect to broker */
     mqtt_connect((char*) arg, BROKER_PORT);
 
-    //mqtt subscribe orario apertura/chiusura
+    /* Subscribe to opening hours topic */
     mqtt_subscribe(OPENING_HOURS_TOPIC, 0, on_pub);
 
-    //publish hello every ALIVE_PERIOD seconds
+    /* Publish hello every ALIVE_PERIOD seconds to the topic ALIVE_TOPIC/0 */
     char topic[64];
     sprintf(topic, "%s/%d", ALIVE_TOPIC, 0);
-
     char data[128];
 
     while(1) {
-        puts("while");
-
-        //print current time
+        /* Print current time */
         struct tm time;
         rtc_get_time(&time);
-
         printf("%d/%d/%d %d:%d:%d\n", time.tm_mday, time.tm_mon,
         time.tm_year+1900, time.tm_hour, time.tm_min, time.tm_sec);
 
+        /* If it receives a STOP_MSG it stops publishing and goes to sleep */
         msg_try_receive(&msg);
         if(msg.content.value == STOP_MSG) thread_sleep();
+
         char timestamp[20];
         timestamp[fmt_u64_dec(timestamp, sntp_get_unix_usec())] = '\0';
         sprintf(data, "hello %s", timestamp);
@@ -222,11 +231,13 @@ static void *mqtt_thread(void *arg) {
 
 
 static int cmd_start(int argc, char **argv){
+    /* Check arguments */
     if (argc < 2) {
         printf("usage: %s <broker addr>\n", argv[0]);
         return 1;
     }
 
+    /* Syncronize time */
     sock_udp_ep_t time_server = { .family = AF_INET6,
                                   .netif = SOCK_ADDR_ANY_NETIF,
                                   .port = NTP_PORT };
@@ -241,18 +252,17 @@ static int cmd_start(int argc, char **argv){
 
     struct tm *tm;
     time_t time = (time_t)(sntp_get_unix_usec() / US_PER_SEC);
-
     tm = gmtime(&time);
     rtc_set_time(tm);
 
-    //print current time
+    /* Print current time */
     printf("%d/%d/%d %d:%d:%d\n", tm->tm_mday, tm->tm_mon,
     tm->tm_year+1900, tm->tm_hour, tm->tm_min, tm->tm_sec);
 
-
+    /* Start broadcasting beacon */
     start_beacon();
 
-    //start mqtt
+    /* Start mqtt thread */
     mqtt_pid = thread_create(mqtt_stack, sizeof(mqtt_stack), EMCUTE_PRIO+1, 0,
                              mqtt_thread, (void*) argv[1], "mqtt");
 
@@ -264,26 +274,16 @@ static const shell_command_t shell_commands[] = {
     { NULL, NULL, NULL }
 };
 
-//only for testing in native
-//extern int _gnrc_netif_config(int argc, char **argv);
-
-
 static msg_t queue[8];
 
 int main(void) {
-    //only for testing in native
-    //char *arg[] = {"ifconfig", "5", "add", "fec0:affe::99"};
-    //_gnrc_netif_config(4, arg);
-
-    /* the main thread needs a msg queue to be able to run `ping6`*/
+    /* The main thread needs a msg queue to be able to run `ping6`*/
     msg_init_queue(queue, (sizeof(queue) / sizeof(msg_t)));
 
-
-    /* start shell */
+    /* Start shell */
     char line_buf[SHELL_DEFAULT_BUFSIZE];
     shell_run(shell_commands, line_buf, SHELL_DEFAULT_BUFSIZE);
 
-
-    /* should be never reached */
+    /* Should be never reached */
     return 0;
 }
