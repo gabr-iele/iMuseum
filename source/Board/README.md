@@ -1,4 +1,4 @@
-#How to run
+# How to run
 - Go into the folder "Beacon" and compile the code with the command "make".
 - Go into the folder "RIOT/examples/gnrc_border_router/" and compile the code with the command "make BOARD=nrf52dk".
 - Open iot-lab and start an experiment with two nrf52dk boards and one A8 board at the Saclay site.
