@@ -28,3 +28,20 @@
 - A global address should be assigned to the board you can check this with the command "ifconfig".
 - NOTE: it may take a while, continue to issue the command "ifconfig" until it has a global address before moving to the next step.
 - Issue the command "start 'ADDR'" where 'ADDR' is the address of the A8 board. It should connect to the broker and start publishing and it should also start to broadcast the beacon signal.
+
+# NOTES
+- Right now the beacon message is random.
+- The topics need to be changed;
+- The sleep functionality can be tested by publishing using mosquitto on the topic "opening_hours" a json message of the form:
+
+        {"close": {
+                "hour": "",
+                "min":  "",
+                "sec":  ""
+                },
+        "open":  {
+                "hour": "",
+                "min":  "",
+                "sec":  ""
+                }
+        }
