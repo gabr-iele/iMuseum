@@ -1,0 +1,28 @@
+///Contains the theme for the whole web app
+$theme-colors: (
+  "primary":#781A2D,
+  "danger": #b80c03
+);
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+.button:focus {
+  font-size: 13px;
+  color: #ffffff;
+}
+
+.btn-primary {
+  background:#781A2D;
+  color: #ffffff;
+}
+
+.btn-secondary{
+  background:#ffffff;
+  color: #781A2D;
+  border-color:#781A2D;
+}
+
+.btn-secondary:hover{
+  background:#781A2D;
+  color: #ffffff;
+}

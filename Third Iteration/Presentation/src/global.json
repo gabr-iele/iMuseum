@@ -1,0 +1,16 @@
+{
+    "GUI":{
+        "RED":"#781A2D",
+        "WHITE":"#FFFFFF",
+        "GREY":"#808080"
+    },
+    "SERVICES":{
+        "FIREBASE":{
+            "API":"AIzaSyBg1aksD3NckvWV1pIoTcFc0xWEtzFNyRA",
+            "APPID":"1:428607492320:web:0f5f2d0c1b17d33a530085"
+        },
+        "GOOGLEMAPS":{
+            "API":"AIzaSyAzONKee2-SfUUXBhy8i7V-zC7W73fqM1o&libraries=places"
+        }
+    }
+}
