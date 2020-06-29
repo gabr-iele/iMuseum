@@ -24,11 +24,8 @@ It also provides informations to the curator (or administrator) of the museum, m
 
 * [[Second Iteration](https://github.com/Giulio64/IOT2020BigProject/tree/master/Second%20Iteration)] Contains all the documents for the second iteration of the project.
 
+* [[Third Iteration](https://github.com/Giulio64/IOT2020BigProject/tree/master/Second%20Iteration)] Contains all the documents for the second iteration of the project.
 
-* [[Presentation](https://github.com/Giulio64/IOT2020BigProject/tree/master/Presentation)] Contains all the piece of code for the presentation tier of the architecture.
-
-
-* [[Application Logic](https://github.com/Giulio64/IOT2020BigProject/tree/master/Presentation)] Contains all the piece of code for the presentation tier of the architecture.
 
 
 ### Tech
