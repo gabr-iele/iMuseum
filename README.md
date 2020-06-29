@@ -4,8 +4,8 @@ This project models a distributed system to enhance the experience of a tour ins
 
 It also provides informations to the curator (or administrator) of the museum, mainly:
 
-- All the visits that took place in the museum.
-- The most viewed pieces along with all the favourite routes inside the museum/exhibition.
+- All the visits that took place in the museum along with the exact route took in the museum.
+- The most viewed pieces along with all the favourite routes inside the museum/exhibition: specificly the most crowded parts of the museum.
 - A report on the sensors status.
 
 # Authors
