@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="iMuseum.View.view_Museum">
+    <ContentView.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="globalStack">
+            <Frame BackgroundColor = "White" VerticalOptions="FillAndExpand" 
+               HorizontalOptions="FillAndExpand" CornerRadius = "5" Margin="10,0,10,0">
+
+                <StackLayout VerticalOptions = "FillAndExpand" HorizontalOptions = "FillAndExpand" Spacing = "10" x:Name="pageStack">
+                    <Image Source="{Binding getMuseumImage}" />
+
+                    <Label Text="{Binding getMuseumDescription }" Margin="0,10,0,0"
+                       TextColor="{StaticResource SapienzaRed}" FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"/>
+
+                    <Label Text="{Binding getClosureDescription}" TextColor="{StaticResource SapienzaRed}"
+                        HorizontalTextAlignment="Center"/>
+
+                    <Label TextColor="{StaticResource SapienzaRed}"/>
+
+
+                    <StackLayout Margin="0,10,0,0">
+                        <Button Text="Start a Vist" CornerRadius="5" AutomationId="visit_button"
+                          x:Name="start_visit_button" FontAttributes="Bold" Clicked="handleVisit"
+                          BackgroundColor="{StaticResource SapienzaRed}" TextColor="White"/>
+
+                        <Button Text="Start Demo Vist" CornerRadius="5" AutomationId="demo_visit_button"
+                          x:Name="demo_visit_button"
+                          Clicked="handleDemoVisit"
+                          BackgroundColor="{StaticResource SapienzaRed}" TextColor="White" FontAttributes="Bold"/>
+                    </StackLayout>
+
+
+                </StackLayout>
+
+            </Frame>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

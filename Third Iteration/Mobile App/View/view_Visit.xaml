@@ -1,0 +1,20 @@
+﻿<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="iMuseum.View.view_Visit">
+    <ContentView.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Frame BackgroundColor = "White" VerticalOptions="FillAndExpand" 
+               HorizontalOptions="FillAndExpand" CornerRadius = "5" Margin="10,10,10,0">
+
+                <StackLayout VerticalOptions = "FillAndExpand" HorizontalOptions = "FillAndExpand" Spacing = "10" x:Name="pageStack">
+                     <Label x:Name="visit_elapse_lbl" TextColor="{StaticResource SapienzaRed}"
+                            HorizontalTextAlignment="Center"/>
+                     <Label Text="{Binding getVisitProgress}" TextColor="{StaticResource SapienzaRed}"
+                            HorizontalTextAlignment="Center" x:Name="piece_visit_counter"/>
+
+                </StackLayout>
+
+            </Frame>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

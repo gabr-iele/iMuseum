@@ -1,0 +1,50 @@
+﻿
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             CloseWhenBackgroundIsClicked="False"
+             xmlns:resources="clr-namespace:iMuseum"
+             x:Class="iMuseum.Popup.p_PositionError">
+    
+    <!--Animations use example-->
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation 
+      PositionIn="Center"
+      PositionOut="Center"
+      ScaleIn="1.2"
+      ScaleOut="0.8"
+      DurationIn="400"
+      DurationOut="300"
+      EasingIn="SinOut"
+      EasingOut="SinIn"
+      HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
+
+    <StackLayout x:Name="layout" HorizontalOptions = "CenterAndExpand" 
+        VerticalOptions = "CenterAndExpand" >
+
+        <Frame BackgroundColor = "White" VerticalOptions="FillAndExpand" 
+               HorizontalOptions="FillAndExpand" CornerRadius = "5" Margin="10,0,10,0">
+            
+            <StackLayout VerticalOptions = "FillAndExpand" HorizontalOptions = "FillAndExpand" Spacing = "10">
+                <Label Text="iMuseum does not have the permissions to access your location."
+                       TextColor="{StaticResource SapienzaRed}"
+                       FontAttributes="Bold"/>
+                <Label
+                    TextColor="{StaticResource SapienzaRed}"
+                    Text="iMuseum uses your current location to check if you are near a supported museum to enhance your experience.&#10;&#10;Please note that your position will never be stored anywhere and it will never use in any other way beside the ones specifed above."/>
+
+                <Button Text="Open Settings"
+                        Margin="0,20,0,0"
+                        TextColor="White"
+                        BackgroundColor="{StaticResource SapienzaRed}"
+                        FontAttributes="Bold"
+                        Clicked="handleSettingSelection"/>
+            </StackLayout>
+           
+        </Frame>
+
+    </StackLayout>
+    <!-- Content -->
+</pages:PopupPage>
