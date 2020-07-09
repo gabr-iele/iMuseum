@@ -23,6 +23,7 @@
         ipv6 true
 - Issue the command "ip -6 -o addr show eth0" to get the address of the board.
 - Issue the command "broker_mqtts config.conf" to start the broker.
+- Ssh into iot-lab from another terminal and again into the a8 board (as done before), create a bridge.py file equal to the one in this folder and run "python bridge.py 'ADDR'", substituting to ADDR the a8 board global address retrieved before.
 - Ssh again into iot-lab from another terminal and issue the command "nc nrf52dk-'ID' 20000" where 'ID' is the identifier of the second nrf52dk board.
 - Issue the command "ble scan" and then "ble connect 0" to connect to the border router.
 - A global address should be assigned to the board you can check this with the command "ifconfig".
