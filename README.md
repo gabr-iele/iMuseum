@@ -37,8 +37,8 @@ It also provides informations to the curator (or administrator) of the museum, m
 
 | Name | Description |
 | ------ | ------ |
-| [Node.js](https://en.wikipedia.org/wiki/Node.js) | javascript variation, used to buid the application logic.|
-| [Firebase.com](https://firebase.google.com) |all-in-one solution that provides both storage and code execution capabilities|
+| [Node.js](https://en.wikipedia.org/wiki/Node.js) | Javascript variation, used to buid the application logic.|
+| [Firebase.com](https://firebase.google.com) |All-in-one solution that provides both storage and code execution capabilities|
 | [React Web](https://it.reactjs.org) | Framework developed by facebook to build web app using Javascript |
 | [RIOT OS](https://riot-os.org) | OS for embedded devices|
 | [MQTT](https://mqtt.org) |Lightweight comunication protocol of publish/subscriber type|
