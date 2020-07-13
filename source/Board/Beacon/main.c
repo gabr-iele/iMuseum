@@ -185,6 +185,8 @@ static void on_pub(const emcute_topic_t *topic, void *data, size_t len) {
 
 /* Mqtt thread */
 static void *mqtt_thread(void *arg) {
+    char** args = (char**) arg;
+    
     /* Initialize IPC message queue */
     msg_t msg;
     msg_t msg_queue[8];
@@ -198,14 +200,12 @@ static void *mqtt_thread(void *arg) {
                                emcute_thread, NULL, "emcute");
 
     /* Connect to broker */
-    mqtt_connect((char*) arg, BROKER_PORT);
+    mqtt_connect(args[0], BROKER_PORT);
 
     /* Subscribe to opening hours topic */
     mqtt_subscribe(OPENING_HOURS_TOPIC, 0, on_pub);
 
-    /* Publish hello every ALIVE_PERIOD seconds to the topic ALIVE_TOPIC/0 */
-    char topic[64];
-    sprintf(topic, "%s/%d", ALIVE_TOPIC, 0);
+    /* Publish message every ALIVE_PERIOD seconds to the topic ALIVE_TOPIC */
     char data[128];
 
     while(1) {
@@ -221,8 +221,8 @@ static void *mqtt_thread(void *arg) {
 
         char timestamp[20];
         timestamp[fmt_u64_dec(timestamp, sntp_get_unix_usec())] = '\0';
-        sprintf(data, "hello %s", timestamp);
-        mqtt_publish(topic, data, 0, 1);
+        sprintf(data, "{\"id\": \"%s\", \"timestamp\": \"%s\"}", args[1], timestamp);
+        mqtt_publish(ALIVE_TOPIC, data, 0, 1);
         xtimer_sleep(ALIVE_PERIOD);
     }
 
@@ -232,8 +232,8 @@ static void *mqtt_thread(void *arg) {
 
 static int cmd_start(int argc, char **argv){
     /* Check arguments */
-    if (argc < 2) {
-        printf("usage: %s <broker addr>\n", argv[0]);
+    if (argc < 3) {
+        printf("usage: %s <broker addr> <board id>\n", argv[0]);
         return 1;
     }
 
@@ -264,7 +264,7 @@ static int cmd_start(int argc, char **argv){
 
     /* Start mqtt thread */
     mqtt_pid = thread_create(mqtt_stack, sizeof(mqtt_stack), EMCUTE_PRIO+1, 0,
-                             mqtt_thread, (void*) argv[1], "mqtt");
+                             mqtt_thread, (void*) argv++, "mqtt");
 
     return 0;
 }
