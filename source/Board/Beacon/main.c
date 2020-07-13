@@ -186,6 +186,8 @@ static void on_pub(const emcute_topic_t *topic, void *data, size_t len) {
 /* Mqtt thread */
 static void *mqtt_thread(void *arg) {
     char** args = (char**) arg;
+    char* addr = args[1];
+    char* id = args[2];
     
     /* Initialize IPC message queue */
     msg_t msg;
@@ -200,7 +202,7 @@ static void *mqtt_thread(void *arg) {
                                emcute_thread, NULL, "emcute");
 
     /* Connect to broker */
-    mqtt_connect(args[0], BROKER_PORT);
+    mqtt_connect(addr, BROKER_PORT);
 
     /* Subscribe to opening hours topic */
     mqtt_subscribe(OPENING_HOURS_TOPIC, 0, on_pub);
@@ -221,7 +223,7 @@ static void *mqtt_thread(void *arg) {
 
         char timestamp[20];
         timestamp[fmt_u64_dec(timestamp, sntp_get_unix_usec())] = '\0';
-        sprintf(data, "{\"id\": \"%s\", \"timestamp\": \"%s\"}", args[1], timestamp);
+        sprintf(data, "{\"id\": \"%s\", \"timestamp\": \"%s\"}", id, timestamp);
         mqtt_publish(ALIVE_TOPIC, data, 0, 1);
         xtimer_sleep(ALIVE_PERIOD);
     }
@@ -264,7 +266,7 @@ static int cmd_start(int argc, char **argv){
 
     /* Start mqtt thread */
     mqtt_pid = thread_create(mqtt_stack, sizeof(mqtt_stack), EMCUTE_PRIO+1, 0,
-                             mqtt_thread, (void*) argv++, "mqtt");
+                             mqtt_thread, (void*) argv, "mqtt");
 
     return 0;
 }
