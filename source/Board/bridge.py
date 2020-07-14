@@ -16,7 +16,7 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     print("Message received")
     payload = json.loads(msg.payload)   # {"id", "timestamp"}
-    ts_ms = str(int(payload["timestamp"]) / 1000000)   # timestamp in secs
+    ts_ms = int(payload["timestamp"]) / 1000000   # timestamp in secs
     msg = {
         payload["id"]: {
             "battery": 100,   # TODO: retrieve battery (if possible)
