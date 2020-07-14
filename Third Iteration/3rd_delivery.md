@@ -79,11 +79,11 @@ We chose to use nRF52DK boards, one for each piece, since they support both BLE 
 
 From the Mobile Application and Web App testers we managed to extract some common comments that are:
 
--The application is really simple to use: no registration needed wich is good (beacuse generally speaking, privacy is a big concern).
+- The application is really simple to use: no registration needed wich is good (beacuse generally speaking, privacy is a big concern).
 
--The application automatically detect museums using the user's position, so no need to choose them from a list, but the application does not work without it: even if the system clearly explain why it needs the position, some users still don't feel confident about giving that information.
+-  The application automatically detect museums using the user's position, so no need to choose them from a list, but the application does not work without it: even if the system clearly explain why it needs the position, some users still don't feel confident about giving that information.
 
--The web app interface is simple enough and easy to use, but the crowd sensing it's a little bit confusing without any tutorial, also providing the password every time can be annoying. 
+-The Web app interface is simple enough and easy to use, but the crowd sensing it's a little bit confusing without any tutorial, also providing the password every time can be annoying. 
 
 
 ### Evaluation: what is missing
