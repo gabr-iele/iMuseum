@@ -22,7 +22,7 @@
 #define BROKER_PORT             (1885U)
 #define OPENING_HOURS_TOPIC     ("opening_hours")
 #define ALIVE_TOPIC             ("alive")
-#define ALIVE_PERIOD            (5)
+#define ALIVE_PERIOD            (30)
 
 #define STOP_MSG                (1)
 
@@ -106,7 +106,7 @@ static void on_pub(const emcute_topic_t *topic, void *data, size_t len) {
            topic->name, (int)topic->id);
     printf("%s\n", in);
 
-    /* Clear cyrrent alarm */
+    /* Clear current alarm */
     rtc_clear_alarm();
 
     /* initialize open/close hour with current hour */
@@ -124,64 +124,67 @@ static void on_pub(const emcute_topic_t *topic, void *data, size_t len) {
         return;
     }
 
-    char buf[16];
 
     /* Loop over all keys of the root object */
     for (int i = 1; i < r; i++) {
         if (jsoneq(in, &t[i], "close") == 0) {
-            for(; i < r; i++) {
+            i++;
+            int end = i+4;
+            for(; i < end; i++) {
                 if (jsoneq(in, &t[i], "hour") == 0) {
                     i++;
-                    sprintf(buf, "%.*s", t[i].end - t[i].start, in + t[i].start);
-                    close_hour.tm_hour = atoi(buf);
+                    char str[t[i].end - t[i].start +1];
+                    memcpy(str, in + t[i].start, t[i].end - t[i].start);
+                    str[t[i].end - t[i].start] = '\0';
+                    close_hour.tm_hour = atoi(str);
                 } else if (jsoneq(in, &t[i], "min") == 0) {
                     i++;
-                    sprintf(buf, "%.*s", t[i].end - t[i].start, in + t[i].start);
-                    close_hour.tm_min = atoi(buf);
-                } else if (jsoneq(in, &t[i], "sec") == 0) {
-                    i++;
-                    sprintf(buf, "%.*s", t[i].end - t[i].start, in + t[i].start);
-                    close_hour.tm_sec = atoi(buf);
-                    break;
+                    char str[t[i].end - t[i].start +1];
+                    memcpy(str, in + t[i].start, t[i].end - t[i].start);
+                    str[t[i].end - t[i].start] = '\0';
+                    close_hour.tm_min = atoi(str);
                 }
             }
         }
-        else if (jsoneq(in, &t[i], "open") == 0) {
-            for(; i < r; i++) {
+        if (jsoneq(in, &t[i], "open") == 0) {
+            i++;
+            int end = i+4;
+            for(; i < end; i++) {
                 if (jsoneq(in, &t[i], "hour") == 0) {
                     i++;
-                    sprintf(buf, "%.*s", t[i].end - t[i].start, in + t[i].start);
-                    open_hour.tm_hour = atoi(buf);
+                    char str[t[i].end - t[i].start +1];
+                    memcpy(str, in + t[i].start, t[i].end - t[i].start);
+                    str[t[i].end - t[i].start] = '\0';
+                    open_hour.tm_hour = atoi(str);
                 } else if (jsoneq(in, &t[i], "min") == 0) {
                     i++;
-                    sprintf(buf, "%.*s", t[i].end - t[i].start, in + t[i].start);
-                    open_hour.tm_min = atoi(buf);
-                } else if (jsoneq(in, &t[i], "sec") == 0) {
-                    i++;
-                    sprintf(buf, "%.*s", t[i].end - t[i].start, in + t[i].start);
-                    open_hour.tm_sec = atoi(buf);
-                    break;
+                    char str[t[i].end - t[i].start +1];
+                    memcpy(str, in + t[i].start, t[i].end - t[i].start);
+                    str[t[i].end - t[i].start] = '\0';
+                    open_hour.tm_min = atoi(str);
                 }
             }
         }
     }
 
-
     /* Set close hour */
+    close_hour.tm_sec = 0;
     rtc_tm_normalize(&close_hour);
-    printf("%d/%d/%d %d:%d:%d\n", close_hour.tm_mday, close_hour.tm_mon,
+    printf("%d/%d/%d %d:%d:%d\n", close_hour.tm_mday, close_hour.tm_mon+1,
     close_hour.tm_year+1900, close_hour.tm_hour, close_hour.tm_min, close_hour.tm_sec);
 
 
     /* Set open hour */
     open_hour.tm_mday += 1;
+    close_hour.tm_sec = 0;
     rtc_tm_normalize(&open_hour);
-    printf("%d/%d/%d %d:%d:%d\n", open_hour.tm_mday, open_hour.tm_mon,
+    printf("%d/%d/%d %d:%d:%d\n", open_hour.tm_mday, open_hour.tm_mon+1,
     open_hour.tm_year+1900, open_hour.tm_hour, open_hour.tm_min, open_hour.tm_sec);
 
     /* start close hour alarm */
     rtc_set_alarm(&close_hour, close_cb, NULL);
 }
+
 
 /* Mqtt thread */
 static void *mqtt_thread(void *arg) {
@@ -214,16 +217,17 @@ static void *mqtt_thread(void *arg) {
         /* Print current time */
         struct tm time;
         rtc_get_time(&time);
-        printf("%d/%d/%d %d:%d:%d\n", time.tm_mday, time.tm_mon,
+        printf("%d/%d/%d %d:%d:%d\n", time.tm_mday, time.tm_mon+1,
         time.tm_year+1900, time.tm_hour, time.tm_min, time.tm_sec);
 
         /* If it receives a STOP_MSG it stops publishing and goes to sleep */
         msg_try_receive(&msg);
         if(msg.content.value == STOP_MSG) thread_sleep();
 
-        char timestamp[20];
+        char timestamp[32];
         timestamp[fmt_u64_dec(timestamp, sntp_get_unix_usec())] = '\0';
         sprintf(data, "{\"id\": \"%s\", \"timestamp\": \"%s\"}", id, timestamp);
+        puts("publishing");
         mqtt_publish(ALIVE_TOPIC, data, 0, 1);
         xtimer_sleep(ALIVE_PERIOD);
     }
@@ -258,7 +262,7 @@ static int cmd_start(int argc, char **argv){
     rtc_set_time(tm);
 
     /* Print current time */
-    printf("%d/%d/%d %d:%d:%d\n", tm->tm_mday, tm->tm_mon,
+    printf("%d/%d/%d %d:%d:%d\n", tm->tm_mday, tm->tm_mon+1,
     tm->tm_year+1900, tm->tm_hour, tm->tm_min, tm->tm_sec);
 
     /* Start broadcasting beacon */
