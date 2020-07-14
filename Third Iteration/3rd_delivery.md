@@ -2,6 +2,9 @@
 
 This document aims to summarize the changes made on the project (architecture, design and evaluation aspects) since the second delivery. In particular, it provides the technical work which has been completed, the functionalities which have been implemented, the ones that are still missing and the evaluation done on the realized artifact.
 
+## Comments 
+Concerns have been expressed about the lack of features of the system and the waste of data coming from the visits, now the system's focus is on data analytics rather than simply providing information to the user from the sensors.(more of that in the Mobile app and Web app section). 
+
 ## What has changed
 
 - [Architecture] /* TODO: insert BLE between board */
@@ -16,19 +19,22 @@ This document aims to summarize the changes made on the project (architecture, d
   
 - Mobile app
 
-  */ TODO: describe how the app detects BLE packets from the boards, how talks with backend */
+ The mobile application starts detecting BLE packets from the moment it detects a museum compatible with the application (if the user is close enough to a museum using subscribed to the service, it will show a notification to the user that will start a visit).
+ 
+ Once the application detect a valid sensor ID, it will send it to the cloud infrastructure (along with the ID of the visit) and respond with all the data of the piece where the sensor is placed on. 
+ 
+ The cloud infrastructure memorize the transit of the user to compute usefull statistics about the path taken inside the museum and how frequently a piece is visited.
   
 - Web app
 
-  */ TODO: describe added functionalities about visits */
+From the feedback received, a much bigger importance was given to data analytics and crowd sensing. Specifically: now the cloud infrastructure use a model to compute how crowded a piece inside a museum can be, based on data received from all the visits that took place in the museum. All the visits also provide data about the exact path that visitors took inside the museum in the form of a Graph (showing any loops or not from the start to the visit to the end).
   
   
-  
-## Still to do
+## Still to do / System evolution
 
 - Introduce the battery level in the alive message sent by the boards to the backend: right now, the only information received by the backend is the timestamp, used to check whether the board has been recently alive or much time has passed and therefore it has probably gone down. It may be useful to monitor the battery level of the boards, in order to check the energy consumption and be ready to replace it.
-- Heatmaps /* TODO */
-- Add other useful informations for curators (?) */ TODO */
+
+-Study and implement a ML model to compute the attendance level of a statue (opposed to the current one based upon tresholds).
 
 
 ## Evaluation done
@@ -71,8 +77,13 @@ We chose to use nRF52DK boards, one for each piece, since they support both BLE 
 
 ### User experience
 
-/* TODO */
+From the Mobile Application and Web App testers we managed to extract some common comments that are:
 
+-The application is really simple to use: no registration needed wich is good (beacuse generally speaking, privacy is a big concern).
+
+-The application automatically detect museums using the user's position, so no need to choose them from a list, but the application does not work without it: even if the system clearly explain why it needs the position, some users still don't feel confident about giving that information.
+
+-The web app interface is simple enough and easy to use, but the crowd sensing it's a little bit confusing without any tutorial, also providing the password every time can be annoying. 
 
 
 ### Evaluation: what is missing
