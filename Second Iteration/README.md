@@ -6,7 +6,13 @@ This folders contains all the document for the second iteration of the project.
 * [[Design](./Design/Design.md)] Contains the documents describing the design.
 * [[Evaluation](./Evaluation/Evaluation.md)] Contains the documents describing the evaluation process.
 
-Link to the previous iteration's documents: https://github.com/Giulio64/IOT2020BigProject/tree/master/First%20Iteration
+Links to previous versions of the Architecture, Design and Evaluation documents:
+
+**1st version**
+- [Architecture](https://github.com/Giulio64/IOT2020BigProject/tree/master/First%20Iteration/Architecture)
+- [Design](https://github.com/Giulio64/IOT2020BigProject/tree/master/First%20Iteration/Design)
+- [Evaluation](https://github.com/Giulio64/IOT2020BigProject/tree/master/First%20Iteration/Evaluation)
+
 
 ## Presentations
 
