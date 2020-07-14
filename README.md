@@ -24,7 +24,7 @@ It also provides informations to the curator (or administrator) of the museum, m
 
 * [[Second Iteration](https://github.com/Giulio64/IOT2020BigProject/tree/master/Second%20Iteration)] Contains all the documents for the second delivery of the project.
 
-* [[Third Iteration](https://github.com/Giulio64/IOT2020BigProject/tree/master/Second%20Iteration)] Contains all the documents for the third and final delivery of the project.
+* [[Third Iteration](https://github.com/Giulio64/IOT2020BigProject/tree/master/Third%20Iteration)] Contains all the documents for the third and final delivery of the project.
 
 
 ### Useful Links
