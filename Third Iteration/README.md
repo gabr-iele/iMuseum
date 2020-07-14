@@ -11,3 +11,5 @@ Links to previous versions of the Architecture, Design and Evaluation documents:
 - [Architecture](https://github.com/Giulio64/IOT2020BigProject/tree/master/Second%20Iteration/Architecture)
 - [Design](https://github.com/Giulio64/IOT2020BigProject/tree/master/Second%20Iteration/Design)
 - [Evaluation](https://github.com/Giulio64/IOT2020BigProject/tree/master/Second%20Iteration/Evaluation)
+
+For the 3rd delivery description document, please check: 3rd_delivery.md
