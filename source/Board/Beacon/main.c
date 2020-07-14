@@ -188,7 +188,7 @@ static void on_pub(const emcute_topic_t *topic, void *data, size_t len) {
 
     /* Set open hour */
     open_hour.tm_mday += 1;
-    close_hour.tm_sec = 0;
+    open_hour.tm_sec = 0;
     rtc_tm_normalize(&open_hour);
     printf("%d/%d/%d %d:%d:%d\n", open_hour.tm_mday, open_hour.tm_mon+1,
     open_hour.tm_year+1900, open_hour.tm_hour, open_hour.tm_min, open_hour.tm_sec);

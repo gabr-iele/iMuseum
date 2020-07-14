@@ -16,7 +16,7 @@ def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
     mqttcl.subscribe(ALIVE_TOPIC)
     res = requests.get(GET_HOURS_URL)
-    data_json = json.loads(res.txt)["data"]
+    data_json = json.loads(res.text)["data"]
     mqttcl.publish(HOURS_TOPIC, json.dumps(data_json))
 
 def on_message(client, userdata, msg):
