@@ -34,7 +34,7 @@ From the feedback received, a much bigger importance was given to data analytics
 
 - Introduce the battery level in the alive message sent by the boards to the backend: right now, the only information received by the backend is the timestamp, used to check whether the board has been recently alive or much time has passed and therefore it has probably gone down. It may be useful to monitor the battery level of the boards, in order to check the energy consumption and be ready to replace it.
 
--Study and implement a ML model to compute the attendance level of a statue (opposed to the current one based upon tresholds).
+- Study and implement a ML model to compute the attendance level of a statue (opposed to the current one based upon tresholds).
 
 
 ## Evaluation done
