@@ -2,6 +2,7 @@ import paho.mqtt.client as mqtt
 import requests
 import sys
 import json
+import uuid
 
 PUT_SENSOR_URL = "https://europe-west1-iot2020-def28.cloudfunctions.net/putSensor"
 GET_HOURS_URL = "https://europe-west1-iot2020-def28.cloudfunctions.net/getMuseumHoursFromID/3a1e0ca8-0d61-4d79-8652-cd92eabb0547"
@@ -22,8 +23,11 @@ def on_message(client, userdata, msg):
     print("Message received")
     payload = json.loads(msg.payload)   # {"id", "timestamp"}
     ts_ms = int(payload["timestamp"]) / 1000000   # timestamp in secs
+    id = {
+        "uuid": str(uuid.UUID(payload["id"]))
+    }
     msg = {
-        payload["id"]: {
+        id["uuid"]: {
             "battery": 100,   # TODO: retrieve battery (if possible)
             "lastTimestamp": ts_ms
         }
