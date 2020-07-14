@@ -35,6 +35,7 @@ kernel_pid_t mqtt_pid;
 struct tm open_hour;
 struct tm close_hour;
 
+uint8_t uuid[16];
 
 /* Emcute thread */
 static void *emcute_thread(void *arg) {
@@ -76,7 +77,7 @@ static void open_cb(void *arg) {
     puts("opening");
 
     /* Start beacon */
-    start_beacon();
+    start_beacon(uuid);
 
     /* Start mqtt */
     thread_wakeup(mqtt_pid);
@@ -87,6 +88,17 @@ static void open_cb(void *arg) {
 
     /* Start close hour alarm */
     rtc_set_alarm(&close_hour, close_cb, NULL);
+}
+
+/* Function for converting a string containing an hexadecimal number
+ * to an array of bytes */
+static void hex_string_to_byte_array(char *string, uint8_t *array) {
+    for (uint8_t i=0; i<strlen(string); i+=2){
+        char temp[2];
+        temp[0]=string[i];
+        temp[1]=string[i+1];
+        array[i/2]=(uint8_t)strtol(temp, NULL, 16);
+    }
 }
 
 static int jsoneq(const char *json, jsmntok_t *tok, const char *s) {
@@ -266,7 +278,8 @@ static int cmd_start(int argc, char **argv){
     tm->tm_year+1900, tm->tm_hour, tm->tm_min, tm->tm_sec);
 
     /* Start broadcasting beacon */
-    start_beacon();
+    hex_string_to_byte_array(argv[2], uuid);
+    start_beacon(uuid);
 
     /* Start mqtt thread */
     mqtt_pid = thread_create(mqtt_stack, sizeof(mqtt_stack), EMCUTE_PRIO+1, 0,

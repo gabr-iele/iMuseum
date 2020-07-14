@@ -14,16 +14,11 @@ static void ble_app_set_addr(void) {
     assert(rc == 0);
 }
 
-static void ble_app_advertise(void) {
+static void ble_app_advertise(uint8_t *uuid) {
     struct ble_gap_adv_params adv_params;
-    uint8_t uuid128[16];
     int rc;
 
-    /* Arbitrarily set the UUID to a string of 0x11 bytes. */
-    memset(uuid128, 0x11, sizeof uuid128);
-
-    /* Major version=2; minor version=10. */
-    rc = ble_ibeacon_set_adv_data(uuid128, 2, 10, 0);
+    rc = ble_ibeacon_set_adv_data(uuid, 0, 0, 0);
     assert(rc == 0);
 
     /* Begin advertising. */
@@ -33,9 +28,9 @@ static void ble_app_advertise(void) {
     assert(rc == 0);
 }
 
-void start_beacon(void) {
+void start_beacon(uint8_t *uuid) {
     ble_app_set_addr();
-    ble_app_advertise();
+    ble_app_advertise(uuid);
     puts("beacon started");
 }
 
