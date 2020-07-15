@@ -7,8 +7,9 @@ Concerns have been expressed about the lack of features of the system and the wa
 
 ## What has changed
 
-- [Architecture] /* TODO: insert BLE between board */
-- [Architecture] /* TODO: remove PONTE infame and add mqtt bridge calling rest api */
+- [Architecture] Due to RIOT OS not supporting the multiprotocol mode (BLE + 802.15.4) of the nrf52840dk board the architecture has been changed to use only BLE for both the communication between the boards and with the smartphone
+- [Architecture] Since 802.15.4 support it's not needed anymore the board used has been changed from the nrf52840dk to the nrf52dk
+- [Architecture] The Eclipse Ponte bridge has been substituted with an MQTT to REST bridge developed by ourself to have finer control over its inner working
 
 
 ## Technical work
@@ -35,6 +36,8 @@ From the feedback received, much bigger importance was given to data analytics a
 - Introduce the battery level in the alive message sent by the boards to the backend: right now, the only information received by the backend is the timestamp, used to check whether the board has been recently alive or much time has passed and therefore it has probably gone down. It may be useful to monitor the battery level of the boards, in order to check the energy consumption and be ready to replace it.
 
 - Study and implement an ML model to compute the attendance level of a statue (opposed to the current one based upon thresholds).
+
+ - Improve the UI of the bridge and of boards firmware so that no technical knowledge is needed to run them.
 
 
 ## Evaluation done
