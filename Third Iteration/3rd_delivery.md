@@ -3,7 +3,7 @@
 This document aims to summarize the changes made on the project (architecture, design and evaluation aspects) since the second delivery. In particular, it provides the technical work which has been completed, the functionalities which have been implemented, the ones that are still missing and the evaluation done on the realized artifact.
 
 ## Comments 
-Concerns have been expressed about the lack of features of the system and the waste of data coming from the visits, now the system's focus is on data analytics rather than simply providing information to the user from the sensors.(more of that in the Mobile app and Web app section). 
+Concerns have been expressed about the lack of features of the system and the waste of data coming from the visits, now the system's focus is on data analytics rather than simply providing information to the user from the sensors (more of that in the Mobile app and Web app section). 
 
 ## What has changed
 
@@ -21,29 +21,29 @@ Concerns have been expressed about the lack of features of the system and the wa
 
  The mobile application starts detecting BLE packets from the moment it detects a museum compatible with the application (if the user is close enough to a museum using subscribed to the service, it will show a notification to the user that will start a visit).
  
- Once the application detect a valid sensor ID, it will send it to the cloud infrastructure (along with the ID of the visit) and respond with all the data of the piece where the sensor is placed on. 
+ Once the application detects a valid sensor ID, it will send it to the cloud infrastructure (along with the ID of the visit) and respond with all the data of the piece where the sensor is placed on. 
  
- The cloud infrastructure memorize the transit of the user to compute usefull statistics about the path taken inside the museum and how frequently a piece is visited.
+ The cloud infrastructure memorizes the transit of the user to compute useful statistics about the path taken inside the museum and how frequently a piece is visited.
   
 - Web app
 
-From the feedback received, a much bigger importance was given to data analytics and crowd sensing. Specifically: now the cloud infrastructure use a model to compute how crowded a piece inside a museum can be, based on data received from all the visits that took place in the museum. All the visits also provide data about the exact path that visitors took inside the museum in the form of a Graph (showing any loops or not from the start to the visit to the end).
+From the feedback received, much bigger importance was given to data analytics and crowdsensing. Specifically: now the cloud infrastructure uses a model to compute how crowded a piece inside a museum can be, based on data received from all the visits that took place in the museum. All the visits also provide data about the exact path that visitors took inside the museum in the form of a Graph (showing any loops or not from the start to the visit to the end).
   
   
 ## Still to do / System evolution
 
 - Introduce the battery level in the alive message sent by the boards to the backend: right now, the only information received by the backend is the timestamp, used to check whether the board has been recently alive or much time has passed and therefore it has probably gone down. It may be useful to monitor the battery level of the boards, in order to check the energy consumption and be ready to replace it.
 
-- Study and implement a ML model to compute the attendance level of a statue (opposed to the current one based upon tresholds).
+- Study and implement an ML model to compute the attendance level of a statue (opposed to the current one based upon thresholds).
 
 
 ## Evaluation done
 
 ### Latency
 
-For the beacon liveness notifications, the only interesting aspect is the communication over MQTT to the local bridge. We can't still carry an extremely precise evaluation, since we would need informations about the size of the museum, in order to know whether could be useful to add more gateways and bridges to avoid congestions and increase the quality of service. By testing the system on iotlab with few boards, we reach a very good level of latency for the messages arriving to our gateway board.
+For the beacon liveness notifications, the only interesting aspect is communication over MQTT to the local bridge. We can't still carry an extremely precise evaluation, since we would need information about the size of the museum, in order to know whether could be useful to add more gateways and bridges to avoid congestions and increase the quality of service. By testing the system on iotlab with few boards, we reach a very good level of latency for the messages arriving to our gateway board.
 
-For the communication from the gateway to the backend, as well the communication mobile-backend (in both directions), they are entrusted to the Firebase REST APIs. In this case we have sometime experienced short delays, depending by the network infrastructure, but still acceptale ones, not compromising the quality of an eventual visit.
+For the communication from the gateway to the backend, as well the communication mobile-backend (in both directions), they are entrusted to the Firebase REST APIs. In this case, we have sometimes experienced short delays, depending by the network infrastructure, but still acceptable ones, not compromising the quality of an eventual visit.
 
 
 ### Cloud infrastracture costs
@@ -72,24 +72,24 @@ N.B. From the perspective of a real deployment scenario, the Pay-As-You-Go plan 
 We chose to use nRF52DK boards, one for each piece, since they support both BLE advertising (the part strictly regarding beacons) and MQTT, which is needed for the communication related to the open/closure hours of the museum. We are interested in the following aspects:
 
 - *Scope*: by configuring the output power of the board, a range of 3-4 meters can be reached, which is considered acceptable for the Sapienza Museum.
-- *Cost*: the cost of a single board floats around 30$; in this case, the evaluation highly depends by the number of pieces in the museum and the type of placement which can be adopted for the boards.
+- *Cost*: the cost of a single board floats around 30$; in this case, the evaluation highly depends on the number of pieces in the museum and the type of placement which can be adopted for the boards.
 
 
 ### User experience
 
-From the Mobile Application and Web App testers we managed to extract some common comments that are:
+From the Mobile Application and Web App testers, we managed to extract some common comments that are:
 
-- The application is really simple to use: no registration needed wich is good (beacuse generally speaking, privacy is a big concern).
+- The application is really simple to use: no registration needed wich is good (because generally speaking, privacy is a big concern).
 
--  The application automatically detect museums using the user's position, so no need to choose them from a list, but the application does not work without it: even if the system clearly explain why it needs the position, some users still don't feel confident about giving that information.
+-  The application automatically detects museums using the user's position, so no need to choose them from a list, but the application does not work without it: even if the system clearly explain why it needs the position, some users still don't feel confident about giving that information.
 
-- The Web app interface is simple enough and easy to use, but the crowd sensing it's a little bit confusing without any tutorial, also providing the password every time can be annoying. 
+- The Web app interface is simple enough and easy to use, but the crowdsensing it's a little bit confusing without any tutorial, also providing the password every time can be annoying. 
 
 
 ### Evaluation: what is missing
 
 - We couldn't find a way to exactly estimate the energy consumption/liveness of a board, but we reduced it to the minimal amount making the boards work only during opening hours. More deep analysis should be carried in the future to check whether the activity of the boards exceeds an acceptable limit of battery consumption.
 
-- In the scenario of putting one board on each piece, a museum with very much pieces could find it too expensive; therefore, the cost evaluation could take into account the possibility of putting less boards (e.g. one for room) and see how it affects the other metrics (still taking into account how many pieces the museum exposes).
+- In the scenario of putting one board on each piece, a museum with very much pieces could find it too expensive; therefore, the cost evaluation could take into account the possibility of putting fewer boards (e.g. one for each room) and see how it affects the other metrics (still taking into account how many pieces the museum exposes).
 
 
