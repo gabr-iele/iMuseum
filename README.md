@@ -32,6 +32,8 @@ It also provides informations to the curator (or administrator) of the museum, m
 - A [blog post]() dealing with the main features of the project
 - A [demo video](), showing the functionalities of the project
 
+* [[Project presentation](https://github.com/Giulio64/IOT2020BigProject/blob/master/Third%20Iteration/IOT_FINAL_PRESENTATION.pdf)] Presentation of the project.
+
 
 ### Tech
 
