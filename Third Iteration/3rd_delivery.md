@@ -14,22 +14,25 @@ Concerns have been expressed about the lack of features of the system and the wa
 
 ## Technical work
 
-- Low level architecture
+- **Sensor network**:
+  The firmware for the IOT boards and the MQTT to RESt bridge has been fully developed. 
+  Once started the boards synchronize their time using the sntp protocol and then start broadcasting their identifier over Bluetooth in order for the mobile app to recognize the art piece. Meanwhile they regularly publish a timestamp, that will then be used to check that the board is alive, over an MQTT topic. The boards are also subscribed to another topic where the opening hours are published. RTC alarms are used to put the boards to sleep when the museum closes and wake up when it opens.
+  There is one IPv6 gateway board per museum, running the GNRC border router firmware. It is connected over USB to a Linux computer, itself connected to the internet. The ethos protocol (ethernet over serial) is used for the uplink connection and IPv6 over BLE for downlink.
+  The role of the gateway board is to allow the other boards to communicate with the Linux computer, where the RSMB MQTT/MQTT-SN broker runs.
+  On this machine runs also the MQTT to REST bridge allowing the messages from the boards to reach the cloud infrastructure.
+  <br/>
 
-  */ TODO: describe inter-board RIOT architecture, iotlab, how boards advertise over BLE and how they notify over mqtt (bridge) to the backend */
+- **Mobile app**:
+  The mobile application starts detecting BLE packets from the moment it detects a museum compatible with the application (if the user is close enough to a museum using subscribed to the service, it will show a notification to the user that will start a visit).
   
-- Mobile app
+  Once the application detects a valid sensor ID, it will send it to the cloud infrastructure (along with the ID of the visit) and respond with all the data of the piece where the sensor is placed on. 
+  
+  The cloud infrastructure memorizes the transit of the user to compute useful statistics about the path taken inside the museum and how frequently a piece is visited.
+  <br/>
 
- The mobile application starts detecting BLE packets from the moment it detects a museum compatible with the application (if the user is close enough to a museum using subscribed to the service, it will show a notification to the user that will start a visit).
- 
- Once the application detects a valid sensor ID, it will send it to the cloud infrastructure (along with the ID of the visit) and respond with all the data of the piece where the sensor is placed on. 
- 
- The cloud infrastructure memorizes the transit of the user to compute useful statistics about the path taken inside the museum and how frequently a piece is visited.
-  
-- Web app
-
-From the feedback received, much bigger importance was given to data analytics and crowdsensing. Specifically: now the cloud infrastructure uses a model to compute how crowded a piece inside a museum can be, based on data received from all the visits that took place in the museum. All the visits also provide data about the exact path that visitors took inside the museum in the form of a Graph (showing any loops or not from the start to the visit to the end).
-  
+- **Web app**:
+  From the feedback received, much bigger importance was given to data analytics and crowdsensing. Specifically: now the cloud infrastructure uses a model to compute how crowded a piece inside a museum can be, based on data received from all the visits that took place in the museum. All the visits also provide data about the exact path that visitors took inside the museum in the form of a Graph (showing any loops or not from the start to the visit to the end).
+    
   
 ## Still to do / System evolution
 
