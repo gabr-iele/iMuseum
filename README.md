@@ -43,5 +43,5 @@ It also provides informations to the curator (or administrator) of the museum, m
 | [React Web](https://it.reactjs.org) | Framework developed by facebook to build web app using Javascript |
 | [RIOT OS](https://riot-os.org) | OS for embedded devices|
 | [MQTT](https://mqtt.org) |Lightweight comunication protocol of publish/subscriber type|
-| [IEEE 802.15.4](https://it.wikipedia.org/wiki/IEEE_802.15.4) |Low rate wifi protocol for small embedded devices |
+| [BLE + IPV6](https://blog.nordicsemi.com/getconnected/why-run-ipv6-over-bluetooth-low-energy) |Combination of IPV6 technology over BLE to connect small devices to internet|
 | [Xamarin Forms](https://docs.microsoft.com/it-it/xamarin/xamarin-forms/) |C# Framework to develop cross platform mobile applications|
