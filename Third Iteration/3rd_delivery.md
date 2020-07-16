@@ -40,7 +40,7 @@ Concerns have been expressed about the lack of features of the system and the wa
 
 - Study and implement an ML model to compute the attendance level of a statue (opposed to the current one based upon thresholds).
 
- - Improve the UI of the bridge and of boards firmware so that no technical knowledge is needed to run them.
+ - Improve the UI of the bridge and of the boards firmware so that no technical knowledge is needed to run them.
 
 
 ## Evaluation done
