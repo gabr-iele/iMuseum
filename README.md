@@ -1,7 +1,7 @@
 # iMuseum
 
 <div align="center">
-<img src="https://github.com/Giulio64/iMuseum/tree/master/source/iMuseum_cover.png" >
+<img src="https://github.com/Giulio64/iMuseum/blob/master/source/iMuseum_cover.png" >
 </div>
 
 This project models a distributed system to enhance the experience of a tour inside a museum joined with the collection of info for academic purposes along with the usual tour experience: the user can so enjoy the tour while getting all the research data he/she needs. This is basically implemented through a mobile app and an IoT sensor placed on each piece.
